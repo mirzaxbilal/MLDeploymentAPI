@@ -23,46 +23,65 @@ This project allows users to use their prediction models through an API that sup
 - Consumer service listens and processes queued jobs
 
 ---
-## API Endpoints
+## Endpoints
 
-POST /predict (Synchronously)
+### 1. POST /predict (Synchronous)
 
- -Description: Submits a prediction request to be processed synchronously.
- -Headers:
-  - Async-Mode: false
- -Request Body:
-   {
-     "input": "some text input"
-   }
+**Description**: Submits a prediction request to be processed synchronously.
 
-Response (done):
+**Headers**:
+- `Async-Mode`: `false`
+
+**Request Body**:
+```json
 {
-    "input": "Sample input data for the model",
-    "result": "mocked prediction"
+  "input": "some text input"
 }
+```
 
+**Response (Done)**:
+```json
+{
+  "input": "Sample input data for the model",
+  "result": "mocked prediction"
+}
+```
 
-POST /predict (Asynchronous)
+---
 
- -Description: Submits a prediction request to be processed asynchronously.
- -Headers:
-  - Async-Mode: true
- -Request Body:
-   {
-     "input": "some text input"
-   }
+### 2. POST /predict (Asynchronous)
 
-Response (request received):
+**Description**: Submits a prediction request to be processed asynchronously.
+
+**Headers**:
+- `Async-Mode`: `true`
+
+**Request Body**:
+```json
+{
+  "input": "some text input"
+}
+```
+
+**Response (Request Received)**:
+```json
 {
   "prediction_id": "uuid",
   "message": "Request received. Processing asynchronously."
 }
+```
 
-GET /predict/{prediction_id}
- -Description: Fetches the result of a previously submitted async prediction.
- -Path Parameter: prediction_id – ID received in async response
+---
 
-Response (done):
+### 3. GET /predict/{prediction_id}
+
+**Description**: Fetches the result of a previously submitted asynchronous prediction.
+
+**Path Parameter**:
+- `prediction_id`: ID received in the asynchronous response
+
+**Response (Done)**:
+```json
 {
   "prediction_id": "uuid",
   "output": {
@@ -70,8 +89,10 @@ Response (done):
     "result": "mocked prediction"
   }
 }
+```
 
-Response (processing):
+**Response (Processing)**:
+```json
 {
   "prediction_id": "uuid",
   "output": {
@@ -79,11 +100,14 @@ Response (processing):
     "result": "processing"
   }
 }
+```
 
-Response (not found):
+**Response (Not Found)**:
+```json
 {
   "error": "Prediction ID not found."
 }
+```
 
 ---
 
