@@ -114,7 +114,6 @@ This project allows users to use their prediction models through an API that sup
 ## Assumptions
 
 - Redis is used for both streaming and temporary result storage.
-- No authentication is needed as per the requirements.
 - The consumer always starts from the beginning of the stream (can be adjusted for production).
 
 ---
