@@ -1,4 +1,4 @@
-# ZephyrAI
+# Machine Learning Model Deployment API
 
 This project allows users to use their prediction models through an API that supports both synchronous and asynchronous processing modes. 
 
@@ -15,6 +15,7 @@ This project allows users to use their prediction models through an API that sup
 
 - Step 1 - Make sure Docker and Docker Compose are installed on your machine.
 - Step 2 - Start the Docker daemon if it's not already running.
+- Step 3 - Rename .env.bak file to .env
 - Step 3 - In the root directory of the project, run the following command in terminal: docker-compose up --build
 
 - The application will now run at `http://localhost:8080`
